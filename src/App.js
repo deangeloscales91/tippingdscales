@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+const sampleBusinesses = [
+  { name: 'Paul\'s Deli', category: 'Restaurant' },
+  { name: 'Colonial Gifts', category: 'Shop' },
+  { name: 'Busch Gardens', category: 'Attraction' },
+];
+
 export default function App() {
-  return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif', textAlign: 'center' }}>
-      <h1>TippingDSCales: Keys to the City</h1>
-      <p>🎉 Business listings, loyalty rewards, guestbook, discounts, and ad forms are now fully integrated.</p>
-    </div>
-  );
-}
+  const [category, setCategory] = useState('All');
+  const [guestbookEntries, setGuestbookEntries] = useState([]);
+  const [entry, setEntry] = useState({ name: '', comment: '', photo: '' });
+
+  const filtered = category === 'All'
+    ? sampleBusinesses
+    : sampleBusinesses.filter(b => b
